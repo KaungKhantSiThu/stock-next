@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-          <div id="gradient">
+          <div>
               <h1>Node.js</h1>
               <h2>Kaung Khant Si Thu</h2>
           </div>
