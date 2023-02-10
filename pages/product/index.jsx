@@ -34,7 +34,7 @@ export async function getServerSideProps() {
     console.debug(`Fetching ${process.env.APIURL}product`)
     const ret = await fetch(`${process.env.APIURL}product`)
     const products = await ret.json()
-    console.log({ products })
+    //console.log({ products })
     return {
         props: {
             products

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Home(props) {
     const { employees } = props;
-
+    console.log('client', employees)
     if (!employees) return (<div>Loading...</div>)
 
     const list = employees.map((employee) => (
@@ -33,11 +33,11 @@ export async function getServerSideProps() {
     // products.json is in /public
     console.debug(`Fetching ${process.env.APIURL}employee`)
     const ret = await fetch(`${process.env.APIURL}employee`)
-    const employee = await ret.json()
-    console.log({ employee })
+    const employees = await ret.json()
+    console.log({ employees })
     return {
         props: {
-            employee
+            employees
         }
     }
 }
