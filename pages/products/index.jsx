@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Home({ products }) {
 
   function deleteProduct(id) {
-    fetch(`${process.env.APIURL}/api/products/${id}`,
+    fetch(`${process.env.APIURL}products/${id}`,
       {
         method: 'DELETE'
       })
