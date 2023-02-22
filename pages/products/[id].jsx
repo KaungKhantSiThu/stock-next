@@ -2,7 +2,8 @@ import Head from "next/head"
 import Link from "next/link"
 
 // Step 2: This component is rendered from the server (Server-Side Rendering) SSR
-export default function Blog({ product }) {
+export default function Product
+({ product }) {
   console.log('product 2', product)
   if (!product) return (
     <div>
@@ -26,7 +27,7 @@ export default function Blog({ product }) {
 // STEP 1: This function will be executed at the server before loading the page.
 export async function getServerSideProps({ params }) {
   console.debug('params', params)
-  const res = await fetch(`http://localhost:3000/api/products/${params.id}`)
+  const res = await fetch(`${process.env.APIURL}products/${params.id}`)
   const product = await res.json()
   console.debug('product 1', product)
   return { props: { product } }
