@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Home({ products }) {
 
   function deleteProduct(id) {
-    fetch(`http://localhost:3000/api/products/${id}`,
+    fetch(`${process.env.APIURL}/api/products/${id}`,
       {
         method: 'DELETE'
       })
@@ -48,7 +48,7 @@ export default function Home({ products }) {
   )
 }
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/products/`)
+  const res = await fetch(`${process.env.APIURL}products`)
   const products = await res.json()
   // console.debug('product 1', products)
   return { props: { products } }
