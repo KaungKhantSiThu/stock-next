@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Home({ products }) {
 
-  function deleteProduct(id) {
-    fetch(`${process.env.APIURL}products/${id}`,
+  async function deleteProduct(id) {
+    await fetch(`http://stock-next-alpha.vercel.app/api/products/${id}`,
       {
         method: 'DELETE'
       })
@@ -48,6 +49,7 @@ export default function Home({ products }) {
   )
 }
 export async function getServerSideProps() {
+  
   const res = await fetch(`${process.env.APIURL}products`)
   const products = await res.json()
   // console.debug('product 1', products)
