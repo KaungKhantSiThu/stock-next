@@ -5,14 +5,14 @@ import Link from 'next/link'
 export default function Home({ products }) {
 
   async function deleteProduct(id) {
+      console.log(id)
     await fetch(`${process.env.APIURL}/products/${id}`,
       {
         method: 'DELETE'
       })
       .then(res => res.json())
-      .then(data => {
-        // alert("Deleting " + id)
-        window.location.reload(false);
+      .then(() => {
+        window.location.reload();
       })
 
   }
@@ -49,9 +49,7 @@ export default function Home({ products }) {
   )
 }
 export async function getServerSideProps() {
-  
-  const res = await fetch(`${process.env.APIURL}products`)
+  const res = await fetch(`${process.env.APIURL}/products`)
   const products = await res.json()
-  // console.debug('product 1', products)
   return { props: { products } }
 }
