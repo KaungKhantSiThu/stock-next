@@ -26,7 +26,7 @@ export default function Product
 // STEP 1: This function will be executed at the server before loading the page.
 export async function getServerSideProps({ params }) {
   console.debug('params', params)
-  const res = await fetch(`${process.env.APIURL}/products/${params.id}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${params.id}`)
   const product = await res.json()
   return { props: { product } }
 }
